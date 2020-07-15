@@ -1,0 +1,15 @@
+<p class = "main" >Users works!</p>
+<div *ngFor="let article of users">
+    <h2>id: {{article.id}}</h2>
+  
+      <p>
+       name: {{article.name}}
+      </p>
+      <p>
+      surname: {{article.surname}}
+      </p>
+      <p>
+        visit: {{article.visit}}
+        </p>
+      <a href="{{article.url}}">Read full article</a>
+  </div>

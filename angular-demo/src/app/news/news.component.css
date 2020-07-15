@@ -1,0 +1,17 @@
+* {
+    background-color: silver;
+}
+div p,h2,a{
+    display: flex;
+    
+    justify-content: center;
+  }
+p {
+    display: flex; 
+    justify-content: center;
+  
+}
+
+.main {
+    color: magenta;
+}

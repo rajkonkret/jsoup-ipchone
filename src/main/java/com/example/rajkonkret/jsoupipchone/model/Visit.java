@@ -28,7 +28,7 @@ public class Visit {
 
     //    @ManyToOne
 //    @JoinColumn(name = "user_id")
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     User2 user;
 

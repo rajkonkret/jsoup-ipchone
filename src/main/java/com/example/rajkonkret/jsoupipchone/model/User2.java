@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,8 +24,14 @@ public class User2 {
     String surname;
     String pesel;
 
-    @OneToOne
-    Visit visit;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    Set<Visit> visits = new HashSet<>();
+
+    public void addVisit(Visit visit) {
+        visit.setUser(this);
+        visits.add(visit);
+
+    }
 
 
 //    public User2(String user, String surname) {

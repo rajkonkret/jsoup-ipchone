@@ -20,9 +20,6 @@ public class MyRunner implements CommandLineRunner {
     private DoctorRepository doctorRepository;
 
     @Autowired
-    private final DoctorService doctorService;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
@@ -31,21 +28,20 @@ public class MyRunner implements CommandLineRunner {
     @Autowired
     VisitRepository visitRepository;
 
-    public MyRunner(
-            DoctorRepository doctorRepository,
-            DoctorService doctorService,
-            UserRepository userRepository,
-            VisitRepository visitRepository) {
-        this.doctorRepository = doctorRepository;
-        this.doctorService = doctorService;
-        this.userRepository = userRepository;
-        this.visitRepository = visitRepository;
-
-    }
 
     @Override
     public void run(String... args) throws Exception {
 
+        User2 user = new User2();
+        user.setName("Radek");
+
+        Visit visit = new Visit();
+        visit.setDateOfVisit(LocalDate.now());
+        visit.setTypeOfVisit(TypeOfVisit.KONSULTACJA);
+        visit.setStatus(StatusYourVisit.ORDERED);
+        user.addVisit(visit);
+
+        userRepository.save(user);
 //        Doctor doctor = new Doctor(
 //                "fra", "kjres", Specialty.OGÓLNY);
 //        System.out.println(doctor);

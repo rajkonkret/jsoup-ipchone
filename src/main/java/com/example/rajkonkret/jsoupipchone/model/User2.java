@@ -1,8 +1,6 @@
 package com.example.rajkonkret.jsoupipchone.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,19 +8,21 @@ import java.util.Objects;
 import java.util.Set;
 
 @Data
+
 @Entity
-@AllArgsConstructor
+
 @NoArgsConstructor
 
 public class User2 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;
     String surname;
     String pesel;
+    String username;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     Set<Visit> visits = new HashSet<>();
@@ -47,21 +47,6 @@ public class User2 {
 //        this.visit = visit;
 //    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     public String toString() {
@@ -73,6 +58,18 @@ public class User2 {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User2 user2 = (User2) o;
+        return Objects.equals(username, user2.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
+    }
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;

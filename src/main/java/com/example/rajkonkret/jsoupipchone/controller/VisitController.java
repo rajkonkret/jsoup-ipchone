@@ -2,13 +2,13 @@ package com.example.rajkonkret.jsoupipchone.controller;
 
 import com.example.rajkonkret.jsoupipchone.model.Visit;
 import com.example.rajkonkret.jsoupipchone.repository.VisitRepository;
+import com.example.rajkonkret.jsoupipchone.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -17,9 +17,12 @@ public class VisitController {
     @Autowired
     VisitRepository visitRepository;
 
+    @Autowired
+    VisitService visitService;
+
     @GetMapping
-    public List<Visit> getAllVisits() {
-        return visitRepository.findAll();
+    public Collection<Visit> getAllVisits() {
+        return visitService.getAllVisits();
     }
 
     @PostMapping

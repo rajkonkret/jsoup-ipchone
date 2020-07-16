@@ -3,23 +3,27 @@ package com.example.rajkonkret.jsoupipchone.model;
 
 import com.example.rajkonkret.jsoupipchone.StatusYourVisit;
 import com.example.rajkonkret.jsoupipchone.TypeOfVisit;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 
 @Data
+
 @Entity
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class Visit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User2 user;
+
     LocalDate dateOfVisit;
     @Enumerated(EnumType.STRING)
     StatusYourVisit status;
@@ -28,15 +32,11 @@ public class Visit {
 
     //    @ManyToOne
 //    @JoinColumn(name = "user_id")
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User2 user;
 
 
 //    @ManyToOne
 //    @JoinColumn(name = "doctor_id")
 //    Doctor doctor;
-
 
 
 }

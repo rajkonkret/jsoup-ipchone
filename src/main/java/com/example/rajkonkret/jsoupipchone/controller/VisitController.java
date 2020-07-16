@@ -1,6 +1,7 @@
 package com.example.rajkonkret.jsoupipchone.controller;
 
 import com.example.rajkonkret.jsoupipchone.model.Visit;
+import com.example.rajkonkret.jsoupipchone.model.VisitDto;
 import com.example.rajkonkret.jsoupipchone.repository.VisitRepository;
 import com.example.rajkonkret.jsoupipchone.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class VisitController {
     VisitService visitService;
 
     @GetMapping
-    public Collection<Visit> getAllVisits() {
+    public Collection<VisitDto> getAllVisits() {
         return visitService.getAllVisits();
     }
 

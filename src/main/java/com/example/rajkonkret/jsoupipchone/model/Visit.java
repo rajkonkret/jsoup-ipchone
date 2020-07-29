@@ -20,7 +20,7 @@ public class Visit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch  = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     User2 user;
 

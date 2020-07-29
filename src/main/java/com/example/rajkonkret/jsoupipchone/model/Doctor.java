@@ -32,11 +32,11 @@ public class Doctor {
         this.specialty = specialty;
     }
 
-    public Doctor(String fra, String kjres, Specialty ogólny, Set<Visit> o) {
-        this.name = fra;
-        this.surname = kjres;
-        this.specialty = ogólny;
-       // this.visit = o;
+    public Doctor(String name, String surname, Specialty specialty, Set<Visit> o) {
+        this.name = name;
+        this.surname = surname;
+        this.specialty = specialty;
+        //this.visit = o;
     }
     // Specialty specialty;
 }

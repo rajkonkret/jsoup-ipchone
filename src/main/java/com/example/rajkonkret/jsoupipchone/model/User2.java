@@ -1,5 +1,6 @@
 package com.example.rajkonkret.jsoupipchone.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class User2 {
     String pesel;
     String username;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch  = FetchType.EAGER)
     Set<Visit> visits = new HashSet<>();
 
     public void addVisit(Visit visit) {
@@ -56,6 +57,11 @@ public class User2 {
                 ", surname='" + surname + '\'' +
                 ", pesel='" + pesel + '\'' +
                 '}';
+    }
+
+    @JsonIgnore
+    public Set<Visit> getVisits() {
+        return visits;
     }
 
     @Override

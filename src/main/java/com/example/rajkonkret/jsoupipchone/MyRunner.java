@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -42,11 +43,32 @@ public class MyRunner implements CommandLineRunner {
         user.addVisit(visit);
 
         userRepository.save(user);
+
+        User2 user2 = new User2();
+        user2.setName("Radito");
+
+        Visit visit1 = new Visit();
+        visit1.setDateOfVisit(LocalDate.now());
+        visit1.setTypeOfVisit(TypeOfVisit.KONSULTACJA);
+        visit1.setStatus(StatusYourVisit.FINISHED);
+        user2.addVisit(visit1);
+        userRepository.save(user2);
+
+
+        Visit visit2 = new Visit();
+        visit2.setDateOfVisit(LocalDate.now());
+        visit2.setTypeOfVisit(TypeOfVisit.ZABIEG);
+        visit2.setStatus(StatusYourVisit.FINISHED);
+        Optional<User2> user3 = userRepository.findById(1L);
+        System.out.printf(user3.get().toString());
+        user3.get().addVisit(visit2);
+        visitRepository.save(visit2);
 //        Doctor doctor = new Doctor(
 //                "fra", "kjres", Specialty.OGÓLNY);
 //        System.out.println(doctor);
-//        doctorRepository.save(doctor);
-//        User2 user1 = new User2();
+//        doctorRepository.save( );
+//        User2 user1 = new User2();        userRepository.save(user);
+
 //        userRepository.save(user1);
 ////
 //        Visit visit = new Visit(
@@ -54,7 +76,7 @@ public class MyRunner implements CommandLineRunner {
 //                StatusYourVisit.ORDERED,
 //                TypeOfVisit.KONSULTACJA, user1, doctor);
 //        System.out.println(visit);
-       // visitRepository.save(visit);
+        // visitRepository.save(visit);
 //        Visit visit1 = new Visit(
 //                LocalDate.now(),
 //                StatusYourVisit.ORDERED,

@@ -29,11 +29,11 @@ public class UserController {
         //return userRepository.findAll();
         return Optional.ofNullable(userService.findAllUsers())
         //        .orElse(Collections.singletonList(new User2()));
-       .orElse(Collections.singletonList(new UserDto()));
+       .orElse(Collections.singleton(new UserDto()));
     }
     @GetMapping("/all")
     public Collection<User2> getAllUsers2(){
-        return userRepository.findAll();
+        return userRepository.findAllUsers();
     }
 
     @PostMapping

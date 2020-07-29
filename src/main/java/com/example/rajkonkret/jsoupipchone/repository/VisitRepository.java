@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface VisitRepository extends JpaRepository<Visit, Long> {
 
+
     List<Visit> findAll();
 
     @Query(value = " select v from Visit v")

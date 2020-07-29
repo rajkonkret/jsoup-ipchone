@@ -62,7 +62,7 @@ public class MyRunner implements CommandLineRunner {
         Optional<User2> user3 = userRepository.findById(1L);
         System.out.printf(user3.get().toString());
         user3.get().addVisit(visit2);
-        visitRepository.save(visit2);
+        userRepository.save(user3.get());
 //        Doctor doctor = new Doctor(
 //                "fra", "kjres", Specialty.OGÓLNY);
 //        System.out.println(doctor);

@@ -20,13 +20,15 @@ public class Visit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne(fetch  = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     User2 user;
 
     LocalDate dateOfVisit;
+
     @Enumerated(EnumType.STRING)
     StatusYourVisit status;
+
     @Enumerated(EnumType.STRING)
     TypeOfVisit typeOfVisit;
 

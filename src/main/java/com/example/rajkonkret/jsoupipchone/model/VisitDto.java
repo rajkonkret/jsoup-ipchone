@@ -15,10 +15,12 @@ public class VisitDto {
     TypeOfVisit typeOfVisit;
     StatusYourVisit statusYourVisit;
     LocalDate dateOfVisit;
+    User2 user2;
 
-    public VisitDto(TypeOfVisit typeOfVisit, StatusYourVisit statusYourVisit, LocalDate dateOfVisit) {
+    public VisitDto(TypeOfVisit typeOfVisit, StatusYourVisit statusYourVisit, LocalDate dateOfVisit, User2 user2) {
         this.typeOfVisit = typeOfVisit;
         this.statusYourVisit = statusYourVisit;
         this.dateOfVisit = dateOfVisit;
+        this.user2 = user2;
     }
 }

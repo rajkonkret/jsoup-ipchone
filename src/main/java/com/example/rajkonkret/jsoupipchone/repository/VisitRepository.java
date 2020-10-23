@@ -18,6 +18,11 @@ public interface VisitRepository extends JpaRepository<Visit, Long> {
     @Query(value = " select v from Visit v")
     Collection<Visit> findAllVisits();
 
-    @Query(value = "select new com.example.rajkonkret.jsoupipchone.model.VisitDto(v.typeOfVisit as typeOfVisit, v.status as statusYourVisit, v.dateOfVisit as dateOfVisit ) from Visit v ")
+//    @Query(value = "select new com.example.rajkonkret.jsoupipchone.model.VisitDto(v.typeOfVisit as typeOfVisit, v.status as statusYourVisit, v.dateOfVisit as dateOfVisit, v.user2 as user2 ) from Visit v ")
+//    Collection<VisitDto> findAllVisitsDto();
+
+    @Query(value = "select new com.example.rajkonkret.jsoupipchone.model.VisitDto(v.typeOfVisit as typeOfVisit, v.status as statusYourVisit, v.dateOfVisit as dateOfVisit, v.user as user2 ) from Visit v ")
     Collection<VisitDto> findAllVisitsDto();
+
+
 }

@@ -33,36 +33,41 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User2 user = new User2();
-        user.setName("Radek");
-
-        Visit visit = new Visit();
-        visit.setDateOfVisit(LocalDate.now());
-        visit.setTypeOfVisit(TypeOfVisit.KONSULTACJA);
-        visit.setStatus(StatusYourVisit.ORDERED);
-        user.addVisit(visit);
-
-        userRepository.save(user);
-
-        User2 user2 = new User2();
-        user2.setName("Radito");
-
-        Visit visit1 = new Visit();
-        visit1.setDateOfVisit(LocalDate.now());
-        visit1.setTypeOfVisit(TypeOfVisit.KONSULTACJA);
-        visit1.setStatus(StatusYourVisit.FINISHED);
-        user2.addVisit(visit1);
-        userRepository.save(user2);
-
-
-        Visit visit2 = new Visit();
-        visit2.setDateOfVisit(LocalDate.now());
-        visit2.setTypeOfVisit(TypeOfVisit.ZABIEG);
-        visit2.setStatus(StatusYourVisit.FINISHED);
-        Optional<User2> user3 = userRepository.findById(1L);
-        System.out.printf(user3.get().toString());
-        user3.get().addVisit(visit2);
-        userRepository.save(user3.get());
+//        User2 user = new User2();
+//        user.setName("Radek");
+//
+//        Visit visit = new Visit();
+//        visit.setDateOfVisit(LocalDate.now());
+//        visit.setTypeOfVisit(TypeOfVisit.KONSULTACJA);
+//        visit.setStatus(StatusYourVisit.ORDERED);
+//        user.addVisit(visit);
+//
+//        userRepository.save(user);
+//
+//        User2 user2 = new User2();
+//        user2.setName("Radito");
+//
+//        Visit visit1 = new Visit();
+//        visit1.setDateOfVisit(LocalDate.now());
+//        visit1.setTypeOfVisit(TypeOfVisit.KONSULTACJA);
+//        visit1.setStatus(StatusYourVisit.FINISHED);
+//        user2.addVisit(visit1);
+//        userRepository.save(user2);
+//
+//
+//        Visit visit2 = new Visit();
+//        visit2.setDateOfVisit(LocalDate.now());
+//        visit2.setTypeOfVisit(TypeOfVisit.ZABIEG);
+//        visit2.setStatus(StatusYourVisit.FINISHED);
+//        Visit visit3 = new Visit();
+//        visit3.setDateOfVisit(LocalDate.now());
+//        visit3.setTypeOfVisit(TypeOfVisit.RECEPTA);
+//        visit3.setStatus(StatusYourVisit.FINISHED);
+//        Optional<User2> user3 = userRepository.findById(1L);
+//        System.out.printf(user3.get().toString());
+//        user3.get().addVisit(visit2);
+//        user3.get().addVisit(visit3);
+//        userRepository.save(user3.get());
 //        Doctor doctor = new Doctor(
 //                "fra", "kjres", Specialty.OGÓLNY);
 //        System.out.println(doctor);

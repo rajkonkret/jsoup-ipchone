@@ -25,7 +25,7 @@ public class User2 {
     String pesel;
     String username;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch  = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Set<Visit> visits = new HashSet<>();
 
     public void addVisit(Visit visit) {

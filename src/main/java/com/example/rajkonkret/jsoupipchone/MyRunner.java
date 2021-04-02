@@ -113,6 +113,6 @@ public class MyRunner implements CommandLineRunner {
 //        Doctor doctorRadek2 = doctorRepository.findByName("Radek");
 //        System.out.println(doctorRadek2);
 //        doctorRadek2.setSpecialty(Specialty.CHIRURG);
-//        System.out.println(doctorRadek2);
+        System.out.println("test");
     }
 }

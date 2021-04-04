@@ -8,21 +8,19 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Service
 public class DoctorService {
 
-    @Autowired
     DoctorRepository doctorRepository;
 
-    public List<Doctor> findByName(String name) {
-        return doctorRepository.findAll().stream()
-                .filter(s -> s.getName().equals(name))
-                .collect(Collectors.toList());
+    @Autowired
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+
+    public Doctor findByName(String name) {
+        return doctorRepository.findAllByName(name);
     }
 }

@@ -12,7 +12,7 @@ class DoctorServiceTest extends Specification {
 
     private DoctorRepository doctorRepository
 
-    public void setup() {
+    def setup() {
         doctorService = new DoctorService()
 
         doctorRepository = Stub(DoctorRepository.class)
@@ -20,7 +20,7 @@ class DoctorServiceTest extends Specification {
     }
 
 
-    public void "Find by Name"(){
+    def "Find by Name"() {
         given: "a docktor with examples value"
         Doctor doctor = new Doctor()
         doctor.setId(1L)

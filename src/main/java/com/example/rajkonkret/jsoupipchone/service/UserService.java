@@ -3,36 +3,35 @@ package com.example.rajkonkret.jsoupipchone.service;
 import com.example.rajkonkret.jsoupipchone.model.User2;
 import com.example.rajkonkret.jsoupipchone.model.UserDto;
 import com.example.rajkonkret.jsoupipchone.repository.UserRepository;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Slf4j
+@Data
+@NoArgsConstructor
 @Service
 public class UserService {
 
-    //@Autowired
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
+    @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-//    @Autowired
-//    UserDTOREpository userDTOREpository;
 
-    //    public List<User> findAllUsers() {
-//        return userRepository.findAll();
-//    }
     public Collection<UserDto> findAllUsers() {
 
-        //System.out.println( userRepository.findAllUserDto());
-        //return userRepository.findAllUserDto();
-
         Collection<User2> listOfUsers = userRepository.findAllUsers();
-        System.out.println(listOfUsers.size());
+        log.info(listOfUsers.toString());
         return listOfUsers.stream()
                 .map(user -> new UserDto(user.getName(), user.getSurname(), user.getPesel(), user.getVisits()))
                 .collect(Collectors.toList());
-        //return userRepository.findAllUserDto();
+
     }
 }

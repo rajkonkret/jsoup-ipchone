@@ -1,8 +1,9 @@
 package com.example.rajkonkret.jsoupipchone.repository;
 
-
 import com.example.rajkonkret.jsoupipchone.model.User2;
 import com.example.rajkonkret.jsoupipchone.model.UserDto;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,10 +11,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 import java.util.List;
 
-
 @Repository
-public
-interface UserRepository extends JpaRepository<User2, Long> {
+public interface UserRepository extends JpaRepository<User2, Long> {
     //@Query(value = "SELECT t.name  FROM USER t;", nativeQuery = true)
 
     //@Query(value = "SELECT t.name  FROM user2 t;", nativeQuery = true)

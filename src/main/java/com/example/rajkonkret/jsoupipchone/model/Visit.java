@@ -21,7 +21,7 @@ public class Visit {
     Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user2_id")
     User2 user;
 
     LocalDate dateOfVisit;

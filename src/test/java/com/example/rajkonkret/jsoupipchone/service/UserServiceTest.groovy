@@ -1,48 +1,56 @@
 package com.example.rajkonkret.jsoupipchone.service
 
 import com.example.rajkonkret.jsoupipchone.model.User2
-import com.example.rajkonkret.jsoupipchone.model.UserDto
 import com.example.rajkonkret.jsoupipchone.repository.UserRepository
 import groovy.util.logging.Log
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
+import spock.lang.Subject
 
 @Log
+@DataJpaTest
+@ActiveProfiles("test")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 class UserServiceTest extends Specification {
 
+    @Subject
     private UserService userService
 
-    private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository
 
     def setup() {
-        userService = new UserService()
 
-        userRepository = Stub(UserRepository.class)
-        userService.setUserRepository(userRepository)
+       /* userRepository = Stub(UserRepository.class)*/
+        userService = new UserService(userRepository)
+        //userService.setUserRepository(userRepository)
     }
 
     def "FindAllUsers"() {
         given: "a user with example values"
-        User2 user2 = new User2()
+        def user2 = new User2()
         user2.setId(1L)
         user2.setSurname("Janiak")
         user2.setName("Radek")
         user2.setPesel("7508270987654321")
         user2.setUsername("test")
 
-        Collection<User2> collection = Collections.singletonList(user2)
+        def collection = Collections.singletonList(user2)
 
-        and: "alweys return mock user"
-        userRepository.findAllUsers() >> collection
+
+        /*and: "always return mock user"
+        userRepository.findAllUsers()*/
 
         when: "ask for the user"
-        List<UserDto> usersFromRepo = userService.findAllUsers()
+        def usersFromRepo = userService.findAllUsers()
 
         then: "we got user"
-        log.info(usersFromRepo.get(0).toString())
+        log.info(usersFromRepo.toString())
         !usersFromRepo.isEmpty()
         usersFromRepo.size() == 1
-        usersFromRepo.get(0).getPesel() == "7508270987654321"
-
-
+        usersFromRepo.get(0).getPesel() == "7501234567899"
     }
 }

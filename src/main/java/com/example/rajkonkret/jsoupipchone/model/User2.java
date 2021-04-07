@@ -9,11 +9,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Data
-
 @Entity
-
 @NoArgsConstructor
-
 public class User2 {
 
     @Id

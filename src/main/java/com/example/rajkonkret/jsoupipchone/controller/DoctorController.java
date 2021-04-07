@@ -2,7 +2,6 @@ package com.example.rajkonkret.jsoupipchone.controller;
 
 import com.example.rajkonkret.jsoupipchone.model.Doctor;
 import com.example.rajkonkret.jsoupipchone.repository.DoctorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,11 @@ import java.util.List;
 @RequestMapping("/doctors")
 public class DoctorController {
 
-    @Autowired
-    DoctorRepository doctorRepository;
+    final DoctorRepository doctorRepository;
+
+    public DoctorController(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
 
     @GetMapping
     public List<Doctor> getAllDoctors() {

@@ -4,7 +4,6 @@ import com.example.rajkonkret.jsoupipchone.model.Visit;
 import com.example.rajkonkret.jsoupipchone.model.VisitDto;
 import com.example.rajkonkret.jsoupipchone.repository.VisitRepository;
 import com.example.rajkonkret.jsoupipchone.service.VisitService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +14,10 @@ import java.util.Collection;
 @CrossOrigin
 @RequestMapping("/visits")
 public class VisitController {
-    @Autowired
-    VisitRepository visitRepository;
 
-    @Autowired
-    VisitService visitService;
+    private VisitRepository visitRepository;
+
+    private VisitService visitService;
 
     @GetMapping
     public Collection<VisitDto> getAllVisits() {

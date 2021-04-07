@@ -2,21 +2,32 @@ package com.example.rajkonkret.jsoupipchone.service
 
 import com.example.rajkonkret.jsoupipchone.model.Doctor
 import com.example.rajkonkret.jsoupipchone.repository.DoctorRepository
+import groovy.util.logging.Log
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.test.context.ActiveProfiles
 import spock.lang.Specification
+import spock.lang.Subject
 
-import javax.persistence.EntityManager
-
+@Log
+@DataJpaTest
+@ActiveProfiles("test")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 class DoctorServiceTest extends Specification {
 
+    @Subject
     private DoctorService doctorService
 
+    @Autowired
     private DoctorRepository doctorRepository
 
     def setup() {
-        doctorService = new DoctorService()
+        //doctorService = new DoctorService()
 
-        doctorRepository = Stub(DoctorRepository.class)
-        doctorService.setDoctorRepository(doctorRepository)
+        //doctorRepository = Stub(DoctorRepository.class)
+        //doctorService.setDoctorRepository(doctorRepository)
+        doctorService = new DoctorService(doctorRepository)
     }
 
 
@@ -27,9 +38,9 @@ class DoctorServiceTest extends Specification {
         doctor.setName("Radek")
         doctor.setSurname("Janiak")
 
-        and: "always return doctor"
+        /*and: "always return doctor"
         doctorRepository.findAllByName("Radek") >> doctor
-        print(doctor)
+        log.info(doctor.toString())*/
 
         when: "we ask for a docktor"
         Doctor octor = doctorService.findByName("Radek")

@@ -4,7 +4,6 @@ import com.example.rajkonkret.jsoupipchone.model.User2;
 import com.example.rajkonkret.jsoupipchone.model.UserDto;
 import com.example.rajkonkret.jsoupipchone.repository.UserRepository;
 import com.example.rajkonkret.jsoupipchone.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +17,15 @@ import java.util.Optional;
 @RequestMapping("/users")
 public class UserController {
 
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    UserService userService;
+
+    private final UserRepository userRepository;
+
+    private final UserService userService;
+
+    public UserController(UserRepository userRepository, UserService userService) {
+        this.userRepository = userRepository;
+        this.userService = userService;
+    }
 
     @GetMapping
     public Collection<UserDto> getAllUsers() {

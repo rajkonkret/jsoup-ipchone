@@ -6,21 +6,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Repository
-public interface UserRepository extends JpaRepository<User2, Long> {
+public interface UserRepository extends CrudRepository<User2, Long> {
     //@Query(value = "SELECT t.name  FROM USER t;", nativeQuery = true)
 
     //@Query(value = "SELECT t.name  FROM user2 t;", nativeQuery = true)
 
     @Query("select distinct u from User2 u left join fetch u.visits")
-    Collection<User2> findAllUsers();
+    Set<User2> findAllUsers();
 
-//    @Query(value = "select  new com.example.rajkonkret.jsoupipchone.model.UserDto(u.name as name, u.surname as surname, u.pesel as pesel) from User2 u ")
+    @Override
+    Set<User2> findAll();
+
+    //    @Query(value = "select  new com.example.rajkonkret.jsoupipchone.model.UserDto(u.name as name, u.surname as surname, u.pesel as pesel) from User2 u ")
 //   // List<UserDto> findAllUserDto();
 //   // Collection<User2> findAllUser();
 //    Collection<UserDto> findAllUserDto();

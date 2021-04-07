@@ -1,0 +1,1 @@
+insert into user2 (name, pesel) values  ('Radek','7501234567890');

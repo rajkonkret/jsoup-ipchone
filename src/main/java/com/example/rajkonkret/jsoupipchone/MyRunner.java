@@ -8,7 +8,6 @@ import com.example.rajkonkret.jsoupipchone.repository.UserRepository;
 import com.example.rajkonkret.jsoupipchone.repository.VisitRepository;
 import com.example.rajkonkret.jsoupipchone.service.DoctorService;
 import com.example.rajkonkret.jsoupipchone.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +16,7 @@ import java.util.Optional;
 
 @Component
 public class MyRunner implements CommandLineRunner {
-    @Autowired
+    /*@Autowired
     private DoctorRepository doctorRepository;
 
     @Autowired
@@ -27,7 +26,7 @@ public class MyRunner implements CommandLineRunner {
     UserRepository userRepository;
 
     @Autowired
-    VisitRepository visitRepository;
+    VisitRepository visitRepository;*/
 
 
     @Override

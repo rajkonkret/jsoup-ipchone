@@ -1,9 +1,7 @@
 package com.example.rajkonkret.jsoupipchone.service;
 
-import com.example.rajkonkret.jsoupipchone.model.Visit;
 import com.example.rajkonkret.jsoupipchone.model.VisitDto;
 import com.example.rajkonkret.jsoupipchone.repository.VisitRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -12,8 +10,11 @@ import java.util.stream.Collectors;
 @Service
 public class VisitService {
 
-    @Autowired
-    VisitRepository visitRepository;
+    final VisitRepository visitRepository;
+
+    public VisitService(VisitRepository visitRepository) {
+        this.visitRepository = visitRepository;
+    }
 
     public Collection<VisitDto> getAllVisits(){
         Collection<VisitDto> visits = visitRepository.findAllVisitsDto();
